@@ -8,3 +8,5 @@ USER app
 
 ENV PATH "/app:$PATH"
 ADD . /app/
+
+ENTRYPOINT ["./run.sh"]
