@@ -130,6 +130,8 @@ EMACS creates #[filename]#.
 All of these are particularly problematic in combination with PHP, as a file that may contain
 secrets will end up on the webspace without a .php extension and thus won't be parsed.
 
+* [FEROSS: 1% of CMS-Powered Sites Expose Their Database Passwords](https://feross.org/cmsploit/)
+
 
 deadjoe
 -------
@@ -245,6 +247,16 @@ Tests for a remote code execution vulnerability in a script shipped with older v
 that will simply pass the POST data to PHP's eval.
 
 * [CVE-2017-9841 RCE vulnerability in phpunit](http://phpunit.vulnbusters.com/)
+
+
+acmereflect
+-----------
+
+Tests if there's an ACME API endpoint that reflects content and can be abused for XSS.
+Outputs acmereflect_html if the API also reflects HTML code, acmereflect_html_sniff if it outputs
+HTML code and does MIME sniffing.
+
+* [XSS using quirky implementations of ACME http-01](https://labs.detectify.com/2018/09/04/xss-using-quirky-implementations-of-acme-http-01/)
 
 
 axfr
