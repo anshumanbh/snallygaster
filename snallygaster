@@ -601,6 +601,24 @@ def test_acmereflect(url):
 
 
 @DEFAULT
+def test_drupaldb(url):
+    r = fetchpartial(url + "/sites/default/files/.ht.sqlite", 20, binary=True)
+    if r and r[0:13] == b'SQLite format':
+        pout("drupaldb", url + "/sites/default/files/.ht.sqlite")
+
+
+@DEFAULT
+def test_phpwarnings(url):
+    try:
+        r = poolmanager.request("GET", url, headers={"Cookie": "PHPSESSID=in_vålíd"})
+        if 'The session id is too long or contains illegal characters' in r.data.decode('ascii', errors='ignore'):
+            pout("phpwarnings", url)
+    except (urllib3.exceptions.HTTPError, UnicodeError,
+            ConnectionRefusedError, ssl.SSLError):
+        pass
+
+
+@DEFAULT
 @HOSTNAME
 def test_axfr(qhost):
     try:
